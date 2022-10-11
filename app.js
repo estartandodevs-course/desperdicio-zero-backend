@@ -5,7 +5,8 @@ const handlebars=require('express-handlebars');
 const app=express();
 
 app.get('/', function(req, res){
-    res.send('Inicial');
+    //res.send('Inicial');
+    res.sendFile(__dirname+"/index.html");
 });
 
 //Start
