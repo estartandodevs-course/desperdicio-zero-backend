@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.20"
+  },
+  "name": "projeto-desperdicio-zero",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "https://github.com/estartandodevs-course/desperdicio-zero-backend.git",
+  "author": "Jey Godoy <104098119+JeyGodoy@users.noreply.github.com>"
+}
