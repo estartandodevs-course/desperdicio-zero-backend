@@ -7,6 +7,7 @@ const app=express();
 // const swaggerFile = require('./swagger/swagger_output.json');
 
 app.use('/healthcheck', require('./src/routes/health-checker'));
+app.use('/', require('./src/routes/user-routes'));
 
 //Start
 app.listen(3000,function(req, res){
