@@ -1,15 +1,30 @@
 {
-  "dependencies": {
-    "express": "^4.18.2",
-    "express-handlebars": "^6.0.6",
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.20",
-    "swagger-ui-express": "^4.5.0"
-  },
   "name": "projeto-desperdicio-zero",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "repository": "https://github.com/estartandodevs-course/desperdicio-zero-backend.git",
-  "author": "Jey Godoy <104098119+JeyGodoy@users.noreply.github.com>"
+  "author": "Jey Godoy <104098119+JeyGodoy@users.noreply.github.com>",
+  "scripts": {
+    "start": "node src/server.js",
+    "lint:check": "eslint ./src/**/*.js",
+    "lint:fix": "eslint ./src/**/*.js --fix",
+    "format:check": "prettier --check ./src/",
+    "format:write": "prettier --write ./src/",
+    "api:docs": "npx aglio -p 3004 --theme-variables flatly -s -i documentation/api-cep.apib",
+    "test": "",
+    "commit": "./node_modules/cz-customizable/standalone.js",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "mysql": "^2.18.1",
+    "pg": "^8.8.0",
+    "sequelize": "^6.25.3",
+    "swagger-ui-express": "^4.5.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
 }
