@@ -3,7 +3,7 @@ const dbConnection = require('../db/startup');
 const getAllUsers = async (req, res) => {
     try {
         const { rows } = await dbConnection.query(
-            'SELECT id, first_name, family_name, email_adress, birthday FROM public.user'
+            'SELECT id, first_name, family_name, email_address, birth_date FROM public.users'
         );
         console.log('chegamos no USER CONTROLLER', rows);
         res.json('sucesso!');

@@ -6,7 +6,7 @@
   "repository": "https://github.com/estartandodevs-course/desperdicio-zero-backend.git",
   "author": "",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon src/server.js",
     "lint:check": "eslint ./src/**/*.js",
     "lint:fix": "eslint ./src/**/*.js --fix",
     "format:check": "prettier --check ./src/",
