@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     birth_date: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'Users',
+    modelName: 'User',
   });
   return User;
 };

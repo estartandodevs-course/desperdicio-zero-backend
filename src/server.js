@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('./config/database');
-const userModel = require('./models/user-model');
+const userController = require('./controllers/user-controller')
 
 const app = express();
 const PORT = 3000;
@@ -10,7 +10,7 @@ const initApp = async () => {
 	try {
 		await db.sync();
 		console.log('Connection has been established successfully.');
-
+		app.use('/', require('./routes/routes'));
 		app.listen(PORT, () => {
 			console.log(
 				`Server is up and running at: http://localhost:${PORT}`
@@ -23,7 +23,7 @@ const initApp = async () => {
 
 initApp();
 
-// app.use('/', require('./routes/routes'));
+
 
 // app.listen(PORT, (req, res) => {
 //    console.log('Servidor está rodando!');
