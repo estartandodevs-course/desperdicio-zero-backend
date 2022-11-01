@@ -1,14 +1,43 @@
 {
-  "dependencies": {
-    "express": "^4.18.2",
-    "express-handlebars": "^6.0.6",
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.20"
-  },
   "name": "projeto-desperdicio-zero",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "repository": "https://github.com/estartandodevs-course/desperdicio-zero-backend.git",
-  "author": "Jey Godoy <104098119+JeyGodoy@users.noreply.github.com>"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estartandodevs-course/desperdicio-zero-backend.git"
+  },
+  "author": "",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "lint:check": "eslint ./src/**/*.js",
+    "lint:fix": "eslint ./src/**/*.js --fix",
+    "format:check": "prettier --check ./src/",
+    "format:write": "prettier --write ./src/",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "express-joi-validation": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.8.0",
+    "sequelize": "^6.25.3",
+    "vuelidate": "^0.7.7",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1"
+  },
+  "description": "O projeto tem como objetivo a criação de um aplicativo de controle de alimentos na despensa do usuário, evitando o desperdício.",
+  "bugs": {
+    "url": "https://github.com/estartandodevs-course/desperdicio-zero-backend/issues"
+  },
+  "homepage": "https://github.com/estartandodevs-course/desperdicio-zero-backend#readme",
+  "keywords": []
 }
