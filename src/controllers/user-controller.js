@@ -1,36 +1,26 @@
-const db = require('../models');
-const uuid = require('uuid4')
+const userRepository = require('../models/user');
 
 const getAllUsers = async (req, res) => {
 	try {
-	const users = await db.User.findAll({
-		attributes: [
-			[id, id]
-		]
-	});
-		console.log('chegamos no USER CONTROLLER', rows);
+		const users = await userRepository.findAll();
 		res.json(users);
-		//TODO get all no banco}
 	} catch (error) {
 		console.log(error);
 		throw new Error('ERROR_TO_GET_ALL_USERS');
 	}
 };
 
-const getUserByid = async (req, res) => {};
+const getUserById = async (req, res) => {
+	const id = req.params.id;
+	const user = await userRepository.findByPk(id);
+	res.json(user);
+};
 
 const createUser = async (req, res) => {
 	try {
-	const users = await db.Users.create({
-		id: uuid(),
-		first_name: 'Karine',
-		family_name: 'Moraes',
-		email: 'karine.moraes@gmail.com',
-		birth_date: '2004/10/15'
-	});
-		console.log('chegamos no USER CONTROLLER');
-		res.json(users);
-		//TODO get all no banco}
+		const newUser = req.body;
+		const user = await userRepository.create(newUser);
+		res.json(user);
 	} catch (error) {
 		console.log(error);
 		throw new Error('ERROR_TO_GET_ALL_USERS');
@@ -39,12 +29,11 @@ const createUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
 	try {
-		const users = await db.Users.destroy({
-			where: {first_name: 'Karine'}
+		const id = req.params.id;
+		await userRepository.destroy({
+			where: { id }
 		});
-		console.log('chegamos no USER CONTROLLER');
-		res.json(users);
-		//TODO get all no banco}
+		res.json();
 	} catch (error) {
 		console.log(error);
 		throw new Error('ERROR_TO_GET_ALL_USERS');
@@ -54,5 +43,6 @@ const deleteUser = async (req, res) => {
 module.exports = {
 	getAllUsers,
 	createUser,
-	deleteUser
+	deleteUser,
+	getUserById
 };
