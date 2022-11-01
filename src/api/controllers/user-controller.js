@@ -1,4 +1,4 @@
-const db = require('../models');
+const db = require('../../config/db/models');
 const uuid = require('uuid4')
 
 const getAllUsers = async (req, res) => {
