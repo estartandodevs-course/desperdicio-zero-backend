@@ -22,9 +22,3 @@ const initApp = async () => {
 };
 
 initApp();
-
-
-
-// app.listen(PORT, (req, res) => {
-//    console.log('Servidor está rodando!');
-// });

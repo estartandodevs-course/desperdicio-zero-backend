@@ -1,4 +1,5 @@
 const db = require('../models');
+const uuid = require('uuid4')
 
 const getAllUsers = async (req, res) => {
 	try {
@@ -20,11 +21,12 @@ const getUserByid = async (req, res) => {};
 
 const createUser = async (req, res) => {
 	try {
-	const users = await db.User.create({
+	const users = await db.Users.create({
+		id: uuid(),
 		first_name: 'Karine',
 		family_name: 'Moraes',
 		email: 'karine.moraes@gmail.com',
-		birth_date: 2004/10/15
+		birth_date: '2004/10/15'
 	});
 		console.log('chegamos no USER CONTROLLER');
 		res.json(users);
@@ -35,9 +37,22 @@ const createUser = async (req, res) => {
 	}
 };
 
-const deleteUser = async (req, res) => {};
+const deleteUser = async (req, res) => {
+	try {
+		const users = await db.Users.destroy({
+			where: {first_name: 'Karine'}
+		});
+		console.log('chegamos no USER CONTROLLER');
+		res.json(users);
+		//TODO get all no banco}
+	} catch (error) {
+		console.log(error);
+		throw new Error('ERROR_TO_GET_ALL_USERS');
+	}
+};
 
 module.exports = {
 	getAllUsers,
 	createUser,
+	deleteUser
 };

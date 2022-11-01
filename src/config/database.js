@@ -12,6 +12,15 @@ const sequelize = new Sequelize(
 		password: process.env.DB_PASSWORD,
 		database: process.env.DB_NAME,
 		dialect: 'postgres',
+		define: {
+			underscored: true,
+			createdAt: 'created_at',
+			updatedAt: 'updated_at',
+			id: {
+				type: Sequelize.UUID,
+				defaultValue: Sequelize.UUIDV4
+			}
+		},
 	}
 );
 
