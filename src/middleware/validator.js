@@ -7,9 +7,9 @@ const userQuerySchema = Joi.object({
 const userDefaultBodySchema = Joi.object({
     id: Joi.number().required(),
     first_name: Joi.string().required(),
-    family_name: Joi.string().require(),
-    email_address: Joi.string().require(),
-    birth_date: Joi.string().require()
+    family_name: Joi.string().required(),
+    email_address: Joi.string().required(),
+    birth_date: Joi.string().required()
 });
 
 const productQuerySchema = Joi.object({
@@ -23,6 +23,6 @@ const productQuerySchema = Joi.object({
 
 module.exports = {
     userQuerySchema,
-    userBodySchema,
-    productQuerySchema
+    productQuerySchema,
+    userDefaultBodySchema
 }
