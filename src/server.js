@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('./config/database');
-const userController = require('./api/controllers/user-controller')
+const userController = require('./api/controllers/user-controller');
 
 const app = express();
 const PORT = 3000;

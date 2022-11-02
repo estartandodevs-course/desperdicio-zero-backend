@@ -18,8 +18,8 @@ const sequelize = new Sequelize(
 			updatedAt: 'updated_at',
 			id: {
 				type: Sequelize.UUID,
-				defaultValue: Sequelize.UUIDV4
-			}
+				defaultValue: Sequelize.UUIDV4,
+			},
 		},
 	}
 );
