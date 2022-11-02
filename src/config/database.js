@@ -14,14 +14,18 @@ const sequelize = new Sequelize(
 		dialect: 'postgres',
 		define: {
 			createdAt: 'created_at',
-			updatedAt: 'updated_at'
+			updatedAt: 'updated_at',
+			id: {
+				type: Sequelize.UUID,
+				defaultValue: Sequelize.UUIDV4,
+			},
 		},
 		pool: {
 			max: 5,
 			min: 0,
 			acquire: 30000,
-			idle: 10000
-		},
+			idle: 10000,
+		}
 	}
 );
 

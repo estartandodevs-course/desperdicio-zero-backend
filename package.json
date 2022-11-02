@@ -11,6 +11,9 @@
     "lint:fix": "eslint ./src/ --fix",
     "format:check": "prettier --check ./src/",
     "format:write": "prettier --write ./src/",
+    "down": "npx sequelize-cli db:migrate:undo",
+    "migrate": "npx sequelize-cli db:migrate",
+    "seed": "npx sequelize-cli db:seed:all",
     "prepare": "husky install"
   },
   "dependencies": {
