@@ -13,7 +13,6 @@ const sequelize = new Sequelize(
 		database: process.env.DB_NAME,
 		dialect: 'postgres',
 		define: {
-			underscored: true,
 			createdAt: 'created_at',
 			updatedAt: 'updated_at',
 			id: {
@@ -21,6 +20,12 @@ const sequelize = new Sequelize(
 				defaultValue: Sequelize.UUIDV4,
 			},
 		},
+		pool: {
+			max: 5,
+			min: 0,
+			acquire: 30000,
+			idle: 10000,
+		}
 	}
 );
 
