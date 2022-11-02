@@ -1,12 +1,11 @@
 const Sequelize = require('sequelize');
-const database = require('../config/database');
+const database = require('../../../config/database');
 
-const User = database.define('user', {
+const User = database.define('users', {
   id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
+    type: Sequelize.UUID,
     allowNull: false,
-    primaryKey: true,
+    primaryKey: true
   },
   first_name: {
     type: Sequelize.STRING
@@ -17,14 +16,20 @@ const User = database.define('user', {
   email_adress: {
     type: Sequelize.STRING
   },
+  phone_number: {
+	type: Sequelize.STRING(11),
+  },
+  sex: {
+	type: Sequelize.STRING,
+  },
   birthday: {
     type: Sequelize.DATE
   },
   created_at: {
-    type: Sequelize.TIME
+    type: Sequelize.DATE
   },
   updated_at: {
-    type: Sequelize.TIME
+    type: Sequelize.DATE
   }
 });
 

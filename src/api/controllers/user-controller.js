@@ -1,4 +1,4 @@
-const userRepository = require('../models/user');
+const userRepository = require('../db/models/user');
 
 const getAllUsers = async (req, res) => {
 	try {
@@ -27,6 +27,20 @@ const createUser = async (req, res) => {
 	}
 };
 
+const updateUser = async (req, res) => {
+	try {
+		const updateUser = req.body;
+		const id = req.body.id;
+		await userRepository.update(updateUser, {
+			where: { id }
+		});
+		res.json();
+	} catch (error) {
+		console.log(error);
+		throw new Error('ERROR_TO_GET_ALL_USERS');
+	}
+};
+
 const deleteUser = async (req, res) => {
 	try {
 		const id = req.params.id;
@@ -44,5 +58,6 @@ module.exports = {
 	getAllUsers,
 	createUser,
 	deleteUser,
-	getUserById
+	getUserById,
+	updateUser
 };

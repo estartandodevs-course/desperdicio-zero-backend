@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('./config/database');
-const router = require('./routes/routes');
+const router = require('./api/routes/routes');
 const userController = require('./api/controllers/user-controller');
 
 const app = express();

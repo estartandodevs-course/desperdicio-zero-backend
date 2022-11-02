@@ -2,11 +2,11 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable('Users', {
+		await queryInterface.createTable('users', {
 			id: {
 				primaryKey: true,
 				type: Sequelize.UUID,
-				defaultValue: Sequelize.UUIDV4,
+				allowNull: false
 			},
 			first_name: {
 				type: Sequelize.STRING,
@@ -15,7 +15,7 @@ module.exports = {
 			family_name: {
 				type: Sequelize.STRING,
 			},
-			email: {
+			email_adress: {
 				type: Sequelize.STRING,
 				allowNull: false,
 				unique: true,
@@ -24,7 +24,7 @@ module.exports = {
 				type: Sequelize.STRING(11),
 				allowNull: false,
 			},
-			birth_date: {
+			birthday: {
 				type: Sequelize.DATE,
 				allowNull: false,
 			},
@@ -40,6 +40,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable('Users');
+		await queryInterface.dropTable('users');
 	},
 };
