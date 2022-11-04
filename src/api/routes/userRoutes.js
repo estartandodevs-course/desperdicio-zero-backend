@@ -3,7 +3,7 @@ const router = express.Router({});
 const { createValidator } = require('express-joi-validation');
 const validator = createValidator({});
 const {
-	userParamsSchema,
+	userQuerySchema,
 	userDefaultBodySchema,
 } = require('../middleware/userValidator');
 const userController = require('../controllers/user-controller');
@@ -11,8 +11,8 @@ const userController = require('../controllers/user-controller');
 //TODO: implementar validator
 
 router.get(
-	'/user/:id',
-	validator.params(userParamsSchema),
+	'/user',
+	validator.query(userQuerySchema),
 	userController.getUserById
 );
 router.get('/users', userController.getAllUsers);
@@ -27,8 +27,8 @@ router.put(
 	userController.updateUser
 );
 router.delete(
-	'/user/:id',
-	validator.params(userParamsSchema),
+	'/user',
+	validator.query(userQuerySchema),
 	userController.deleteUser
 );
 

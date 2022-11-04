@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const userParamsSchema = Joi.object({
+const userQuerySchema = Joi.object({
 	id: Joi.string().guid().required(),
 });
 
@@ -15,6 +15,6 @@ const userDefaultBodySchema = Joi.object({
 });
 
 module.exports = {
-	userParamsSchema,
+	userQuerySchema,
 	userDefaultBodySchema,
 };

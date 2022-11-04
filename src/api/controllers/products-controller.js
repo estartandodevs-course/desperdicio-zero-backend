@@ -11,7 +11,7 @@ const getAllProducts = async (req, res) => {
 };
 
 const getProductById = async (req, res) => {
-	const id = req.params.id;
+	const id = req.query.id;
 	const product = await productRepository.findByPk(id);
 	res.json(product);
 };

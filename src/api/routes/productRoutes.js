@@ -1,13 +1,35 @@
 const express = require('express');
 const router = express.Router({});
+const { createValidator } = require('express-joi-validation');
+const validator = createValidator({});
+const {
+	productQuerySchema,
+	productDefaultBodySchema,
+} = require('../middleware/productValidator');
 const productController = require('../controllers/products-controller');
 
 //TODO: implementar validator
 
-router.get('/product/:id', productController.getProductById);
+router.get(
+	'/product',
+	validator.query(productQuerySchema),
+	productController.getProductById
+);
 router.get('/products', productController.getAllProducts);
-router.post('/product', productController.createProduct);
-router.put('/product', productController.updateProduct);
-router.delete('/product/:id', productController.deleteProduct);
+router.post(
+	'/product',
+	validator.body(productDefaultBodySchema),
+	productController.createProduct
+);
+router.put(
+	'/product',
+	validator.body(productDefaultBodySchema),
+	productController.updateProduct
+);
+router.delete(
+	'/product',
+	validator.query(productQuerySchema),
+	productController.deleteProduct
+);
 
 module.exports = router;

@@ -11,7 +11,7 @@ const getAllUsers = async (req, res) => {
 };
 
 const getUserById = async (req, res) => {
-	const id = req.params.id;
+	const id = req.query.id;
 	const user = await userRepository.findByPk(id);
 	res.json(user);
 };
@@ -43,7 +43,7 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
 	try {
-		const id = req.params.id;
+		const id = req.query.id;
 		await userRepository.destroy({
 			where: { id },
 		});
