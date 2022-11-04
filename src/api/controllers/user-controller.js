@@ -32,7 +32,7 @@ const updateUser = async (req, res) => {
 		const updateUser = req.body;
 		const id = req.body.id;
 		await userRepository.update(updateUser, {
-			where: { id }
+			where: { id },
 		});
 		res.json();
 	} catch (error) {
@@ -45,7 +45,7 @@ const deleteUser = async (req, res) => {
 	try {
 		const id = req.params.id;
 		await userRepository.destroy({
-			where: { id }
+			where: { id },
 		});
 		res.json();
 	} catch (error) {
@@ -59,5 +59,5 @@ module.exports = {
 	createUser,
 	deleteUser,
 	getUserById,
-	updateUser
+	updateUser,
 };
