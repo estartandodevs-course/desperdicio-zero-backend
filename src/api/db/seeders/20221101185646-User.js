@@ -1,6 +1,6 @@
 'use strict';
 
-const uuid4 = require('uuid4');
+const uuid = require('uuid');
 
 module.exports = {
 	async up(queryInterface, Sequelize) {
@@ -8,7 +8,7 @@ module.exports = {
 			'users',
 			[
 				{
-					id: uuid4(),
+					id: uuid.v4(),
 					first_name: 'Jane Doe',
 					email_adress: 'janedoe@example.com',
 					phone_number: '21972713315',

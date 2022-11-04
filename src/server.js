@@ -2,6 +2,8 @@ const express = require('express');
 const db = require('./config/database');
 const userRouter = require('./api/routes/userRoutes');
 const productRouter = require('./api/routes/productRoutes');
+const uuid = require('uuid');
+const Joi = require('joi');
 
 const app = express();
 const PORT = 3000;
