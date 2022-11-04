@@ -1,5 +1,6 @@
 'use strict';
 
+const { encryptPassword } = require('../../utils/encrypt-password');
 const uuid = require('uuid');
 
 module.exports = {
@@ -14,6 +15,7 @@ module.exports = {
 					phone_number: '21972713315',
 					birthday: '1977/10/11',
 					sex: 'feme',
+					password: await encryptPassword('sucodelimao'),
 					created_at: new Date(),
 					updated_at: new Date(),
 				},

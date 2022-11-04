@@ -20,6 +20,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "express-joi-validation": "^5.0.1",
