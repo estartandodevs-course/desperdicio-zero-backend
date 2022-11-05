@@ -2,6 +2,7 @@ const {
 	createProducts,
 	loadAllProducts,
 	updateProducts,
+	deleteProducts,
 } = require('../services/index');
 const productRepository = require('../db/models/product');
 
@@ -69,9 +70,7 @@ const updateProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
 	try {
 		const id = req.query.id;
-		await productRepository.destroy({
-			where: { id },
-		});
+		await deleteProducts(id);
 		res.json();
 	} catch (error) {
 		console.log(error);
