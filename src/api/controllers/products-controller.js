@@ -2,6 +2,7 @@ const {
 	createProducts,
 	loadAllProducts,
 	updateProducts,
+	getProductByID,
 	deleteProducts,
 } = require('../services/index');
 const productRepository = require('../db/models/product');
@@ -20,7 +21,7 @@ const getAllProducts = async (req, res) => {
 
 const getProductById = async (req, res) => {
 	const id = req.query.id;
-	const product = await productRepository.findByPk(id);
+	const product = await getProductByID(id);
 	res.json(product);
 };
 
