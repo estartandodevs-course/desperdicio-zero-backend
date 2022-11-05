@@ -1,6 +1,7 @@
 const productRepository = require('../../db/models/product');
 
 const createProducts = async (
+	category_id,
 	name,
 	validity,
 	location,
@@ -10,6 +11,7 @@ const createProducts = async (
 ) => {
 	try {
 		const createdProduct = await productRepository.create({
+			category_id,
 			name,
 			validity,
 			location,
