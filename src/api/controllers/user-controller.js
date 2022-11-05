@@ -1,6 +1,6 @@
 const { loadAllUsers, createUsers } = require('../services/users/index');
 const userRepository = require('../db/models/user');
-const Op = require('Sequelize').Op;
+const { updateUsers } = require('../services/users/update-user.service');
 
 const getAllUsers = async (req, res) => {
 	try {
@@ -52,17 +52,24 @@ const createUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
 	try {
-		const updateUser = req.body;
-		const { email_adress, phone_number } = req.body;
-		console.log(email_adress);
-		await userRepository.update(updateUser, {
-			where: {
-				[Op.or]: {
-					email_adress,
-					phone_number,
-				},
-			},
-		});
+		const {
+			first_name,
+			family_name,
+			email_adress,
+			phone_number,
+			birthday,
+			sex,
+			password,
+		} = req.body;
+		await updateUsers(
+			first_name,
+			family_name,
+			email_adress,
+			phone_number,
+			birthday,
+			sex,
+			password
+		);
 		res.json();
 	} catch (error) {
 		console.log(error);
