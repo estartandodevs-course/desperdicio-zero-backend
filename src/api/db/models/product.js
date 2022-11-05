@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const database = require('../../../config/database');
+const category = require('./categories');
 
 const Product = database.define('products', {
 	id: {
@@ -7,6 +8,14 @@ const Product = database.define('products', {
 		allowNull: false,
 		primaryKey: true,
 		autoIncrement: true,
+	},
+	category_id: {
+		type: Sequelize.INTEGER,
+		allowNull: false,
+		references: {
+			model: 'categories',
+			key: 'id',
+		},
 	},
 	name: {
 		type: Sequelize.STRING,

@@ -6,6 +6,7 @@ module.exports = {
 			'products',
 			[
 				{
+					category_id: 1,
 					name: 'tomato',
 					validity: '2023/01/11',
 					location: 'pantry',

@@ -1,3 +1,4 @@
+const { createProducts } = require('../services/index');
 const productRepository = require('../db/models/product');
 
 const getAllProducts = async (req, res) => {
@@ -18,8 +19,16 @@ const getProductById = async (req, res) => {
 
 const createProduct = async (req, res) => {
 	try {
-		const newProduct = req.body;
-		const product = await productRepository.create(newProduct);
+		const { name, validity, location, price, weight, weightUnit } =
+			req.body;
+		const product = await createProducts(
+			name,
+			validity,
+			location,
+			price,
+			weight,
+			weightUnit
+		);
 		res.json(product);
 	} catch (error) {
 		console.log(error);
@@ -43,7 +52,7 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
 	try {
-		const id = req.params.id;
+		const id = req.query.id;
 		await productRepository.destroy({
 			where: { id },
 		});
