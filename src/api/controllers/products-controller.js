@@ -1,13 +1,15 @@
-const { createProducts } = require('../services/index');
+const { createProducts, loadAllProducts } = require('../services/index');
 const productRepository = require('../db/models/product');
 
 const getAllProducts = async (req, res) => {
 	try {
-		const products = await productRepository.findAll();
+		const products = await loadAllProducts();
 		res.json(products);
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_GET_ALL_ProductS');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_GET_ALL_PRODUCTS',
+		});
 	}
 };
 
@@ -40,7 +42,9 @@ const createProduct = async (req, res) => {
 		res.json(product);
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_GET_ALL_ProductS');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_GET_PRODUCT_BY_ID',
+		});
 	}
 };
 
@@ -54,7 +58,9 @@ const updateProduct = async (req, res) => {
 		res.json();
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_GET_ALL_ProductS');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_UPDATE_PRODUCT',
+		});
 	}
 };
 
@@ -67,7 +73,9 @@ const deleteProduct = async (req, res) => {
 		res.json();
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_GET_ALL_ProductS');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_DELETE_PRODUCT',
+		});
 	}
 };
 
