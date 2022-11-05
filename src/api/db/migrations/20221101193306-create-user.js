@@ -27,6 +27,9 @@ module.exports = {
 				allowNull: false,
 				unique: true,
 			},
+			address: {
+				type: Sequelize.STRING,
+			},
 			birthday: {
 				type: Sequelize.DATE,
 				allowNull: false,

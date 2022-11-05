@@ -1,6 +1,10 @@
-const { loadAllUsers, createUsers } = require('../services/users/index');
-const userRepository = require('../db/models/user');
-const { updateUsers } = require('../services/users/update-user.service');
+const {
+	loadAllUsers,
+	createUsers,
+	updateUsers,
+	getUserByID,
+	deleteUsers,
+} = require('../services/index');
 
 const getAllUsers = async (req, res) => {
 	try {
@@ -8,18 +12,22 @@ const getAllUsers = async (req, res) => {
 		res.json(users);
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_GET_ALL_USERS');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_GET_ALL_USERS',
+		});
 	}
 };
 
 const getUserById = async (req, res) => {
 	try {
 		const id = req.query.id;
-		const user = await userRepository.findByPk(id);
+		const user = await getUserByID(id);
 		res.json(user);
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_USER_BY_ID');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_USER_BY_ID',
+		});
 	}
 };
 
@@ -46,7 +54,9 @@ const createUser = async (req, res) => {
 		res.json(newUser);
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_CREATE_USER');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_CREATE_USER',
+		});
 	}
 };
 
@@ -73,20 +83,22 @@ const updateUser = async (req, res) => {
 		res.json();
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_UPDATE_USER');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_UPDATE_USER',
+		});
 	}
 };
 
 const deleteUser = async (req, res) => {
 	try {
 		const id = req.query.id;
-		await userRepository.destroy({
-			where: { id },
-		});
+		await deleteUsers(id);
 		res.json();
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_DELETE_USER');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_DELETE_USER',
+		});
 	}
 };
 
