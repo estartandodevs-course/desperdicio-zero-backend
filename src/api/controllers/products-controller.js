@@ -1,4 +1,8 @@
-const { createProducts, loadAllProducts } = require('../services/index');
+const {
+	createProducts,
+	loadAllProducts,
+	updateProducts,
+} = require('../services/index');
 const productRepository = require('../db/models/product');
 
 const getAllProducts = async (req, res) => {
@@ -50,11 +54,9 @@ const createProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
 	try {
-		const updateProduct = req.body;
+		const updatedProduct = req.body;
 		const id = req.body.id;
-		await productRepository.update(updateProduct, {
-			where: { id },
-		});
+		await updateProducts(updatedProduct, id);
 		res.json();
 	} catch (error) {
 		console.log(error);

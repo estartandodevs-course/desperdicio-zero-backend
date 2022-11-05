@@ -6,6 +6,7 @@ const { deleteUsers } = require('./users/delete-user.service');
 
 const { loadAllProducts } = require('./products/load-products.service');
 const { createProducts } = require('./products/create-product.service');
+const { updateProducts } = require('./products/update-product.service');
 
 const { loadAllCategories } = require('./categories/load-categories.service');
 
@@ -18,6 +19,7 @@ module.exports = {
 
 	loadAllProducts,
 	createProducts,
+	updateProducts,
 
 	loadAllCategories,
 };

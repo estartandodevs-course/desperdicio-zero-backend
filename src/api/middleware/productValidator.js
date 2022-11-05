@@ -5,6 +5,7 @@ const productQuerySchema = Joi.object({
 });
 
 const productDefaultBodySchema = Joi.object({
+	id: Joi.number().integer().required(),
 	category_id: Joi.number().integer().required(),
 	name: Joi.string().required(),
 	validity: Joi.date().required(),
