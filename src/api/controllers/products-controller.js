@@ -5,7 +5,6 @@ const {
 	getProductByID,
 	deleteProducts,
 } = require('../services/index');
-const productRepository = require('../db/models/product');
 
 const getAllProducts = async (req, res) => {
 	try {

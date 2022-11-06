@@ -12,6 +12,10 @@ const { deleteProducts } = require('./products/delete-product.service');
 
 const { loadAllCategories } = require('./categories/load-categories.service');
 
+const {
+	getAllFruitsAndVegetables,
+} = require('./filters/get-fruits-and-vegetables.service');
+
 module.exports = {
 	loadAllUsers,
 	createUsers,
@@ -26,4 +30,6 @@ module.exports = {
 	deleteProducts,
 
 	loadAllCategories,
+
+	getAllFruitsAndVegetables,
 };
