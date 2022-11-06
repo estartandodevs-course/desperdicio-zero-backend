@@ -6,7 +6,7 @@ const {
 	productQuerySchema,
 	productCompleteBodySchema,
 	productBodySchema,
-} = require('../middleware/productValidator');
+} = require('../middleware/product-validator');
 const productController = require('../controllers/products-controller');
 
 //TODO: implementar validator
