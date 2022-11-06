@@ -12,7 +12,7 @@ module.exports = {
 					location: 'pantry',
 					price: '4.00',
 					weight: '100.00',
-					weightUnit: 'G',
+					weightUnit: 'g',
 					created_at: new Date(),
 					updated_at: new Date(),
 				},

@@ -5,7 +5,7 @@ const validator = createValidator({});
 const {
 	userQuerySchema,
 	userDefaultBodySchema,
-} = require('../middleware/userValidator');
+} = require('../middleware/user-validator');
 const userController = require('../controllers/user-controller');
 
 //TODO: implementar validator

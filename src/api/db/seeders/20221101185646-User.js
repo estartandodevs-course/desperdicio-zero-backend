@@ -10,11 +10,12 @@ module.exports = {
 			[
 				{
 					id: uuid.v4(),
-					first_name: 'Jane Doe',
-					email_adress: 'janedoe@example.com',
-					phone_number: '21972713315',
+					first_name: 'Marcela Fernanda',
+					family_name: 'Silva',
+					email_adress: 'marcela.fernanda@example.com',
+					phone_number: '21972717315',
 					birthday: '1977/10/11',
-					sex: 'feme',
+					sex: 'female',
 					password: await encryptPassword('sucodelimao'),
 					created_at: new Date(),
 					updated_at: new Date(),
@@ -25,6 +26,6 @@ module.exports = {
 	},
 
 	async down(queryInterface, Sequelize) {
-		await queryInterface.bulkDelete('users', null, bulkDeleteOptions);
+		await queryInterface.bulkDelete('users', null, {});
 	},
 };
