@@ -13,8 +13,8 @@ const { deleteProducts } = require('./products/delete-product.service');
 const { loadAllCategories } = require('./categories/load-categories.service');
 
 const {
-	getAllFruitsAndVegetables,
-} = require('./filters/get-fruits-and-vegetables.service');
+	getAllFilterProducts,
+} = require('./filters/get-filter-products.service');
 
 module.exports = {
 	loadAllUsers,
@@ -31,5 +31,5 @@ module.exports = {
 
 	loadAllCategories,
 
-	getAllFruitsAndVegetables,
+	getAllFilterProducts,
 };
