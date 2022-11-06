@@ -1,9 +1,9 @@
 const express = require('express');
 const db = require('./config/database');
-const userRouter = require('./api/routes/userRoutes');
-const productRouter = require('./api/routes/productRoutes');
-const categoriesRouter = require('./api/routes/categoriesRoutes');
-const filterRouter = require('./api/routes/filterRoutes');
+const userRouter = require('./api/routes/user-routes');
+const productRouter = require('./api/routes/product-routes');
+const categoriesRouter = require('./api/routes/categories-routes');
+const filterRouter = require('./api/routes/filter-routes');
 
 const app = express();
 const PORT = 3000;
