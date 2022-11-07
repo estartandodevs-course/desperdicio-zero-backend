@@ -3,7 +3,7 @@ const {
 	encryptPassword,
 	verifyPassword,
 } = require('../../utils/encrypt-password');
-const Op = require('Sequelize').Op;
+const Op = require('sequelize').Op;
 
 const updateUsers = async (
 	first_name,
