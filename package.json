@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "repository": "https://github.com/estartandodevs-course/desperdicio-zero-backend.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estartandodevs-course/desperdicio-zero-backend.git"
+  },
   "author": "",
   "scripts": {
     "start": "nodemon src/server.js",
@@ -17,13 +20,16 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
+    "express-joi-validation": "^5.0.1",
     "pg": "^8.8.0",
     "sequelize": "^6.25.3",
     "sequelize-cli": "^6.5.2",
     "uuid4": "^2.0.3",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
@@ -32,5 +38,11 @@
     "husky": "^8.0.1",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1"
-  }
+  },
+  "description": "O projeto tem como objetivo a criação de um aplicativo de controle de alimentos na despensa do usuário, evitando o desperdício.",
+  "bugs": {
+    "url": "https://github.com/estartandodevs-course/desperdicio-zero-backend/issues"
+  },
+  "homepage": "https://github.com/estartandodevs-course/desperdicio-zero-backend#readme",
+  "keywords": []
 }

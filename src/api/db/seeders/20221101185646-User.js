@@ -1,24 +1,24 @@
 'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
+const { encryptPassword } = require('../../utils/encrypt-password');
+const uuid = require('uuid');
+
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		queryInterface.bulkInsert(
+		await queryInterface.bulkInsert(
 			'users',
 			[
 				{
-					first_name: 'Jane Doe',
-					email: 'janedoe@example.com',
-					phone_number: '21972713315',
-					birth_date: '1977/10/11',
-					sex: 'feme',
-				},
-				{
-					first_name: 'Jon Doe',
-					email: 'jondoe@example.com',
-					phone_number: '21972713316',
-					birth_date: '1975/12/15',
-					sex: 'male',
+					id: uuid.v4(),
+					first_name: 'Marcela Fernanda',
+					family_name: 'Silva',
+					email_adress: 'marcela.fernanda@example.com',
+					phone_number: '21972717315',
+					birthday: '1977/10/11',
+					sex: 'female',
+					password: await encryptPassword('sucodelimao'),
+					created_at: new Date(),
+					updated_at: new Date(),
 				},
 			],
 			{}
@@ -26,6 +26,6 @@ module.exports = {
 	},
 
 	async down(queryInterface, Sequelize) {
-		queryInterface.bulkDelete('users', null, {});
+		await queryInterface.bulkDelete('users', null, {});
 	},
 };

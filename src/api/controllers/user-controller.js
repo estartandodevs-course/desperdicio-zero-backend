@@ -1,56 +1,104 @@
-const userRepository = require('../db/models/user');
+const {
+	loadAllUsers,
+	createUsers,
+	updateUsers,
+	getUserByID,
+	deleteUsers,
+} = require('../services/index');
 
 const getAllUsers = async (req, res) => {
 	try {
-		const users = await userRepository.findAll();
+		const users = await loadAllUsers();
 		res.json(users);
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_GET_ALL_USERS');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_GET_ALL_USERS',
+		});
 	}
 };
 
 const getUserById = async (req, res) => {
-	const id = req.params.id;
-	const user = await userRepository.findByPk(id);
-	res.json(user);
+	try {
+		const id = req.query.id;
+		const user = await getUserByID(id);
+		res.json(user);
+	} catch (error) {
+		console.log(error);
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_USER_BY_ID',
+		});
+	}
 };
 
 const createUser = async (req, res) => {
 	try {
-		const newUser = req.body;
-		const user = await userRepository.create(newUser);
-		res.json(user);
+		const {
+			first_name,
+			family_name,
+			email_adress,
+			phone_number,
+			birthday,
+			sex,
+			password,
+		} = req.body;
+		const newUser = await createUsers(
+			first_name,
+			family_name,
+			email_adress,
+			phone_number,
+			birthday,
+			sex,
+			password
+		);
+		res.json(newUser);
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_GET_ALL_USERS');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_CREATE_USER',
+		});
 	}
 };
 
 const updateUser = async (req, res) => {
 	try {
-		const updateUser = req.body;
-		const id = req.body.id;
-		await userRepository.update(updateUser, {
-			where: { id }
-		});
+		const {
+			first_name,
+			family_name,
+			email_adress,
+			phone_number,
+			birthday,
+			sex,
+			password,
+		} = req.body;
+		await updateUsers(
+			first_name,
+			family_name,
+			email_adress,
+			phone_number,
+			birthday,
+			sex,
+			password
+		);
 		res.json();
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_GET_ALL_USERS');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_UPDATE_USER',
+		});
 	}
 };
 
 const deleteUser = async (req, res) => {
 	try {
-		const id = req.params.id;
-		await userRepository.destroy({
-			where: { id }
-		});
+		const id = req.query.id;
+		await deleteUsers(id);
 		res.json();
 	} catch (error) {
 		console.log(error);
-		throw new Error('ERROR_TO_GET_ALL_USERS');
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_DELETE_USER',
+		});
 	}
 };
 
@@ -59,5 +107,5 @@ module.exports = {
 	createUser,
 	deleteUser,
 	getUserById,
-	updateUser
+	updateUser,
 };
