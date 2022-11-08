@@ -6,6 +6,9 @@ const categoriesRouter = require('./api/routes/categories-routes');
 const filterRouter = require('./api/routes/filter-routes');
 const healthchecker = require('./api/routes/healthcheck');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('../swagger_output.json');
+
 const app = express();
 const PORT = 3000;
 
@@ -16,6 +19,8 @@ app.use('/api', productRouter);
 app.use('/api', categoriesRouter);
 app.use('/api', filterRouter);
 app.use('/api', healthchecker);
+
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.listen(PORT, () => {
 	console.log(`🚀 Server is up and running on port:${PORT}`);
