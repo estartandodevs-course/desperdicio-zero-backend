@@ -9,7 +9,7 @@
   },
   "author": "",
   "scripts": {
-    "start": "nodemon src/server.js",
+    "start": "node swagger.js && nodemon src/server.js",
     "lint:check": "eslint ./src/",
     "lint:fix": "eslint ./src/ --fix",
     "format:check": "prettier --check ./src/",
@@ -17,20 +17,23 @@
     "down": "npx sequelize-cli db:migrate:undo",
     "migrate": "npx sequelize-cli db:migrate",
     "seed": "npx sequelize-cli db:seed:all",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "swagger-autogen": "node swagger.js"
   },
   "dependencies": {
     "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "express-joi-validation": "^5.0.1",
+    "joi": "17.7.0",
     "pg": "^8.8.0",
     "sequelize": "^6.25.3",
     "sequelize-cli": "^6.5.2",
-    "uuid4": "^2.0.3",
-    "dotenv": "^16.0.3",
     "uuid": "^9.0.0",
-    "joi": "17.7.0"
+    "uuid4": "^2.0.3",
+    "swagger-autogen": "^2.6.8",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
