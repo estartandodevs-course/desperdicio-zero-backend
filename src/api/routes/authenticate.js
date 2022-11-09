@@ -8,7 +8,7 @@ const { authenticateBodySchema } = require('../middleware/authenticate-user');
 
 const loginAuthController = require('../controllers/authenticate-user');
 
-router.get(
+router.post(
 	'/login',
 	validator.body(authenticateBodySchema),
 	loginAuthController.authenticateUserController
