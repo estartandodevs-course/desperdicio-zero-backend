@@ -1,6 +1,6 @@
 const productRepository = require('../../db/models/product');
 
-const getAllFilterProducts = async (category_id) => {
+const getAllFilterCategories = async (category_id) => {
 	products = await productRepository.findAll({
 		where: { category_id },
 	});
@@ -10,5 +10,5 @@ const getAllFilterProducts = async (category_id) => {
 };
 
 module.exports = {
-	getAllFilterProducts,
+	getAllFilterCategories,
 };

@@ -12,4 +12,6 @@ router.get(
 	'/filter/grains_cereals_and_flours',
 	filterController.getGrainsCerealsAndFlours
 );
+
+router.get('/filter/out-of-date', filterController.getOutOfDateProducts);
 module.exports = router;

@@ -10,7 +10,6 @@ const UserProducts = database.define('user_products', {
 	},
 	user_id: {
 		type: Sequelize.UUID,
-		unique: true,
 	},
 	product_id: {
 		type: Sequelize.INTEGER,

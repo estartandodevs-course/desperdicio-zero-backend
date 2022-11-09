@@ -1,8 +1,11 @@
-const { getAllFilterProducts } = require('../services/index');
+const {
+	getAllFilterCategories,
+	getAllOutOfDateProducts,
+} = require('../services/index');
 
 const getFruitsAndVegetables = async (req, res) => {
 	try {
-		const products = await getAllFilterProducts(1);
+		const products = await getAllFilterCategories(1);
 		res.json(products);
 	} catch (error) {
 		console.log(error);
@@ -14,7 +17,7 @@ const getFruitsAndVegetables = async (req, res) => {
 
 const getColdCutsAndMeats = async (req, res) => {
 	try {
-		const products = await getAllFilterProducts(2);
+		const products = await getAllFilterCategories(2);
 		res.json(products);
 	} catch (error) {
 		console.log(error);
@@ -26,7 +29,7 @@ const getColdCutsAndMeats = async (req, res) => {
 
 const getDrinksAndOthers = async (req, res) => {
 	try {
-		const products = await getAllFilterProducts(3);
+		const products = await getAllFilterCategories(3);
 		res.json(products);
 	} catch (error) {
 		console.log(error);
@@ -38,7 +41,21 @@ const getDrinksAndOthers = async (req, res) => {
 
 const getGrainsCerealsAndFlours = async (req, res) => {
 	try {
-		const products = await getAllFilterProducts(4);
+		const products = await getAllFilterCategories(4);
+		res.json(products);
+	} catch (error) {
+		console.log(error);
+		res.status(400).json({
+			message:
+				error?.message || 'ERROR_TO_FILTER_GRAINS_CEREALS_AND_FLOURS',
+		});
+	}
+};
+
+const getOutOfDateProducts = async (req, res) => {
+	try {
+		console.log(new Date());
+		const products = await getAllOutOfDateProducts();
 		res.json(products);
 	} catch (error) {
 		console.log(error);
@@ -54,4 +71,6 @@ module.exports = {
 	getColdCutsAndMeats,
 	getDrinksAndOthers,
 	getGrainsCerealsAndFlours,
+
+	getOutOfDateProducts,
 };
