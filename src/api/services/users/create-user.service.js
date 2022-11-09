@@ -2,8 +2,7 @@ const userRepository = require('../../db/models/user');
 const { encryptPassword } = require('../../utils/encrypt-password');
 
 const createUsers = async (
-	first_name,
-	family_name,
+	name,
 	email_adress,
 	phone_number,
 	birthday,
@@ -20,22 +19,17 @@ const createUsers = async (
 	});
 	if (isUserPhone) throw new Error('User phone already in use');
 
-	try {
-		const createdUser = await userRepository.create({
-			first_name,
-			family_name,
-			email_adress,
-			phone_number,
-			birthday,
-			password: await encryptPassword(password),
-			sex,
-			created_at: new Date(),
-			updated_at: new Date(),
-		});
-		return createdUser;
-	} catch (error) {
-		throw new Error('server error');
-	}
+	const createdUser = await userRepository.create({
+		name,
+		email_adress,
+		phone_number,
+		birthday,
+		password: await encryptPassword(password),
+		sex,
+		created_at: new Date(),
+		updated_at: new Date(),
+	});
+	return createdUser;
 };
 
 module.exports = { createUsers };

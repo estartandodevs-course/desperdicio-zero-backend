@@ -6,6 +6,4 @@ const loadAllUsers = async () => {
 	return usersList;
 };
 
-module.exports = {
-	loadAllUsers,
-};
+module.exports = { loadAllUsers };

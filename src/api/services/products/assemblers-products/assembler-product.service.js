@@ -39,4 +39,4 @@ const assemblerProducts = async (allProducts) => {
 	});
 };
 
-module.exports = assemblerProducts;
+module.exports = { assemblerProducts };

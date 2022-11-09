@@ -8,12 +8,9 @@ const User = database.define('user', {
 		defaultValue: Sequelize.UUIDV4,
 		unique: true,
 	},
-	first_name: {
+	name: {
 		type: Sequelize.STRING,
 		allowNull: false,
-	},
-	family_name: {
-		type: Sequelize.STRING,
 	},
 	email_adress: {
 		type: Sequelize.STRING,
@@ -31,6 +28,9 @@ const User = database.define('user', {
 	password: {
 		type: Sequelize.STRING,
 		allowNull: false,
+	},
+	sex: {
+		type: Sequelize.STRING,
 	},
 	created_at: {
 		type: Sequelize.DATE,

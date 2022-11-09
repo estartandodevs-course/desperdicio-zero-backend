@@ -8,4 +8,4 @@ const createUserProducts = async (user_id, product_id) => {
 	return createdUserProductsRelation;
 };
 
-module.exports = createUserProducts;
+module.exports = { createUserProducts };

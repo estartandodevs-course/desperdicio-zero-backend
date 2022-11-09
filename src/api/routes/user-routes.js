@@ -8,8 +8,6 @@ const {
 } = require('../middleware/user-validator');
 const userController = require('../controllers/user-controller');
 
-//TODO: implementar validator
-
 router.get(
 	'/user',
 	validator.query(userQuerySchema),

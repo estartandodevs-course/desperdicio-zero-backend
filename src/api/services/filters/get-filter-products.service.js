@@ -4,7 +4,6 @@ const getAllFilterProducts = async (category_id) => {
 	products = await productRepository.findAll({
 		where: { category_id },
 	});
-	console.log(products, typeof products);
 	if (products.length === 0)
 		throw new Error('There is no products in this category');
 	return products;

@@ -32,20 +32,25 @@ const getUserById = async (req, res) => {
 	}
 };
 
+const getAllUserProducts = async (req, res) => {
+	try {
+		const id = req.params.id;
+		const UserProducts = await allUserProducts(id);
+		res.json(UserProducts);
+	} catch (error) {
+		console.log(error);
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_GET_ALL_USER_PRODUCTS',
+		});
+	}
+};
+
 const createUser = async (req, res) => {
 	try {
-		const {
-			first_name,
-			family_name,
-			email_adress,
-			phone_number,
-			birthday,
-			sex,
-			password,
-		} = req.body;
+		const { name, email_adress, phone_number, birthday, sex, password } =
+			req.body;
 		const newUser = await createUsers(
-			first_name,
-			family_name,
+			name,
 			email_adress,
 			phone_number,
 			birthday,
@@ -99,19 +104,6 @@ const deleteUser = async (req, res) => {
 		console.log(error);
 		res.status(400).json({
 			message: error?.message || 'ERROR_TO_DELETE_USER',
-		});
-	}
-};
-
-const getAllUserProducts = async (req, res) => {
-	try {
-		const id = req.params.id;
-		const UserProducts = await allUserProducts(id);
-		res.json(UserProducts);
-	} catch (error) {
-		console.log(error);
-		res.status(400).json({
-			message: error?.message || 'ERROR_TO_GET_ALL_USER_PRODUCTS',
 		});
 	}
 };

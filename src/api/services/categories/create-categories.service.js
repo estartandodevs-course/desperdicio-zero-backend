@@ -18,4 +18,4 @@ const createCategories = async () => {
 	return createdCategory;
 };
 
-module.exports = createCategories;
+module.exports = { createCategories };

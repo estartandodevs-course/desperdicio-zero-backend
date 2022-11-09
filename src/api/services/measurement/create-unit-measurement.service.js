@@ -18,4 +18,4 @@ const createMeasurements = async () => {
 	return createdMeasurements;
 };
 
-module.exports = createMeasurements;
+module.exports = { createMeasurements };
