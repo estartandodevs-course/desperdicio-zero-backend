@@ -11,6 +11,16 @@ const getAllOutOfDateProducts = async () => {
 	});
 	if (products.length === 0)
 		throw new Error('There is no out of date products');
+
+	let totalCashLost = 0;
+	for (product of products) {
+		totalCashLost += product.price / 100;
+	}
+
+	products.push({
+		total_cash: `R$${parseFloat(totalCashLost)}`,
+	});
+
 	return products;
 };
 

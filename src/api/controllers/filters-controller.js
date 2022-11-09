@@ -54,7 +54,6 @@ const getGrainsCerealsAndFlours = async (req, res) => {
 
 const getOutOfDateProducts = async (req, res) => {
 	try {
-		console.log(new Date());
 		const products = await getAllOutOfDateProducts();
 		res.json(products);
 	} catch (error) {

@@ -5,8 +5,6 @@ const {
 	assemblerProducts,
 } = require('../products/assemblers-products/assembler-product.service');
 
-console.log('aa', typeof getUserByID);
-
 const allUserProducts = async (id) => {
 	const userProducts = await UserProductsRepository.findAll({
 		where: {
@@ -14,7 +12,6 @@ const allUserProducts = async (id) => {
 		},
 	});
 
-	console.log('aa', typeof getUserByID(id));
 	const user = await getUserByID(id);
 	const productsByUser = await Promise.all(
 		userProducts.map(async (userProduct) => {
