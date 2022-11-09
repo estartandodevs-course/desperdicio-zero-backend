@@ -3,7 +3,7 @@ const {
 } = require('../../categories/load-categories.service');
 const {
 	loadAllUnitMeasurements,
-} = require('../measurement/load-unit-measurements.service');
+} = require('../../measurement/load-unit-measurements.service');
 
 const mapReference = (allUnitMeasurement) => {
 	return allUnitMeasurement.reduce((acc, item) => {

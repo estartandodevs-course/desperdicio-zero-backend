@@ -27,6 +27,8 @@ const getProductById = async (req, res) => {
 const createProduct = async (req, res) => {
 	try {
 		const {
+			id,
+			user_id,
 			category_id,
 			name,
 			validity,
@@ -36,6 +38,8 @@ const createProduct = async (req, res) => {
 			unit,
 		} = req.body;
 		const product = await createProducts(
+			id,
+			user_id,
 			category_id,
 			name,
 			validity,

@@ -1,8 +1,11 @@
-const { loadAllUsers, allUserProducts } = require('./users/load-users.service');
+const { loadAllUsers } = require('./users/load-users.service');
 const { createUsers } = require('./users/create-user.service');
 const { updateUsers } = require('./users/update-user.service');
 const { getUserByID } = require('./users/get-user-by-id.service');
 const { deleteUsers } = require('./users/delete-user.service');
+const {
+	allUserProducts,
+} = require('./user-products/load-all-user-products.service');
 
 const {
 	loadAllProducts,
@@ -19,7 +22,7 @@ const { createCategories } = require('./categories/create-categories.service');
 const {
 	getAllFilterProducts,
 } = require('./filters/get-filter-products.service');
-const assemblerProducts = require('./products/assemblers/assembler-products');
+const assemblerProducts = require('./products/assemblers-products/assembler-product.service');
 
 module.exports = {
 	loadAllUsers,

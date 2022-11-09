@@ -9,7 +9,8 @@ const UserProducts = database.define('user_products', {
 		autoIncrement: true,
 	},
 	user_id: {
-		type: Sequelize.INTEGER,
+		type: Sequelize.UUID,
+		unique: true,
 	},
 	product_id: {
 		type: Sequelize.INTEGER,

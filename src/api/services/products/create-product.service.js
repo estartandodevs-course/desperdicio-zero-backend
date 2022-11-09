@@ -1,8 +1,13 @@
 const productRepository = require('../../db/models/product');
+const { loadAllCategories } = require('../categories/load-categories.service');
 const createCategories = require('../categories/create-categories.service');
-const createMeasurements = require('./measurement/create-unit-measurement.service');
+const createUserProducts = require('../user-products/create-user-product.service');
+const createMeasurements = require('../measurement/load-unit-measurements.service');
+const loadAllMeasurements = require('../measurement/create-unit-measurement.service');
 
 const createProducts = async (
+	id,
+	user_id,
 	category_id,
 	name,
 	validity,
@@ -20,6 +25,7 @@ const createProducts = async (
 		await createMeasurements();
 	}
 	const createdProduct = await productRepository.create({
+		id,
 		category_id,
 		name,
 		validity,
@@ -28,6 +34,9 @@ const createProducts = async (
 		unit_measurement_id,
 		unit,
 	});
+
+	await createUserProducts(user_id, id);
+
 	return createdProduct;
 };
 

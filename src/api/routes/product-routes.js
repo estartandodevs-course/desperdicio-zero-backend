@@ -4,7 +4,6 @@ const { createValidator } = require('express-joi-validation');
 const validator = createValidator({});
 const {
 	productQuerySchema,
-	productCompleteBodySchema,
 	productBodySchema,
 } = require('../middleware/product-validator');
 const productController = require('../controllers/products-controller');
@@ -24,7 +23,7 @@ router.post(
 );
 router.put(
 	'/product',
-	validator.body(productCompleteBodySchema),
+	validator.body(productBodySchema),
 	productController.updateProduct
 );
 router.delete(

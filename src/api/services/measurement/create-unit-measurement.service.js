@@ -1,4 +1,4 @@
-const measurementsRepository = require('../../../db/models/unitMeasurement');
+const measurementsRepository = require('../../db/models/unitMeasurement');
 
 const createMeasurements = async () => {
 	const createdMeasurements = [
