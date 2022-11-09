@@ -12,6 +12,8 @@ const { deleteProducts } = require('./products/delete-product.service');
 
 const { loadAllCategories } = require('./categories/load-categories.service');
 
+const { authenticateUser } = require('./auth/authenticate-user');
+
 const {
 	getAllFilterProducts,
 } = require('./filters/get-filter-products.service');
@@ -32,4 +34,6 @@ module.exports = {
 	loadAllCategories,
 
 	getAllFilterProducts,
+
+	authenticateUser,
 };

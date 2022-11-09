@@ -6,6 +6,7 @@ const productRouter = require('./api/routes/product-routes');
 const categoriesRouter = require('./api/routes/categories-routes');
 const filterRouter = require('./api/routes/filter-routes');
 const healthchecker = require('./api/routes/healthcheck');
+const authenticateRouter = require('./api/routes/authenticate.js');
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('../swagger_output.json');
@@ -24,6 +25,7 @@ app.use('/api', productRouter);
 app.use('/api', categoriesRouter);
 app.use('/api', filterRouter);
 app.use('/api', healthchecker);
+app.use('/api', authenticateRouter);
 
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
