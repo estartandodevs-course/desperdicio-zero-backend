@@ -1,13 +1,9 @@
 const {
 	loadAllCategories,
 } = require('../../categories/load-categories.service');
-
-const unitMeasurementRespository = require('../../../db/models/unitMeasurement');
-
-const loadAllUniMeasurements = async () => {
-	const allUnitMeasurements = await unitMeasurementRespository.findAll();
-	return allUnitMeasurements;
-};
+const {
+	loadAllUnitMeasurements,
+} = require('../measurement/load-unit-measurements.service');
 
 const mapReference = (allUnitMeasurement) => {
 	return allUnitMeasurement.reduce((acc, item) => {
@@ -23,15 +19,14 @@ const assemblerPrice = (price) => {
 };
 
 const assemblerProducts = async (allProducts) => {
-	const allUnitMeasurements = await loadAllUniMeasurements();
+	const allUnitMeasurements = await loadAllUnitMeasurements();
 	const allCategories = await loadAllCategories();
-	const mapAllCategories = await mapReference(allCategories);
-	const mapAllUnitMesaurement = await mapReference(allUnitMeasurements);
-	return allProducts.map(async (product) => {
-		const unitMeasurement = await mapAllUnitMesaurement[
-			product.unit_measurement_id
-		];
-		const category = await mapAllCategories[product.category_id];
+	const mapAllCategories = mapReference(allCategories);
+	const mapAllUnitMesaurement = mapReference(allUnitMeasurements);
+	return allProducts.map((product) => {
+		const unitMeasurement =
+			mapAllUnitMesaurement[product.unit_measurement_id];
+		const category = mapAllCategories[product.category_id];
 		return {
 			id: product.id,
 			category: category.name,

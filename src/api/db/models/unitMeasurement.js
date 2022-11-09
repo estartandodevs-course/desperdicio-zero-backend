@@ -11,9 +11,6 @@ const UnitMeasurement = database.define('unit_measurements', {
 	name: {
 		type: Sequelize.STRING,
 	},
-	description: {
-		type: Sequelize.STRING,
-	},
 	created_at: {
 		type: Sequelize.DATE,
 	},
