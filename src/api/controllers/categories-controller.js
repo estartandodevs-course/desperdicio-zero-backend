@@ -1,8 +1,12 @@
 const { loadAllCategories } = require('../services/index');
+const createCategories = require('../services/categories/create-categories.service');
 
 const getCategories = async (req, res) => {
 	try {
 		const products = await loadAllCategories();
+		if (!products.length) {
+			await createCategories();
+		}
 		res.json(products);
 	} catch (error) {
 		console.log(error);

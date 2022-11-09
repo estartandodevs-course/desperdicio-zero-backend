@@ -6,23 +6,20 @@ const createProducts = async (
 	validity,
 	location,
 	price,
-	weight,
-	weightUnit
+	unit_measurement_id,
+	unit
 ) => {
-	try {
-		const createdProduct = await productRepository.create({
-			category_id,
-			name,
-			validity,
-			location,
-			price,
-			weight,
-			weightUnit,
-		});
-		return createdProduct;
-	} catch (error) {
-		throw new Error('server error');
-	}
+	// await createCategories()
+	const createdProduct = await productRepository.create({
+		category_id,
+		name,
+		validity,
+		location,
+		price,
+		unit_measurement_id,
+		unit,
+	});
+	return createdProduct;
 };
 
 module.exports = { createProducts };

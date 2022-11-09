@@ -4,7 +4,7 @@ const {
 	updateUsers,
 	getUserByID,
 	deleteUsers,
-	allUserProducts
+	allUserProducts,
 } = require('../services/index');
 
 const getAllUsers = async (req, res) => {
@@ -105,7 +105,6 @@ const deleteUser = async (req, res) => {
 
 const getAllUserProducts = async (req, res) => {
 	try {
-
 		const id = req.params.id;
 		const UserProducts = await allUserProducts(id);
 		res.json(UserProducts);
@@ -123,5 +122,5 @@ module.exports = {
 	deleteUser,
 	getUserById,
 	updateUser,
-	getAllUserProducts
+	getAllUserProducts,
 };

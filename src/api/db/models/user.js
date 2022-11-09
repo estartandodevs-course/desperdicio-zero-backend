@@ -24,6 +24,14 @@ const User = database.define('user', {
 		type: Sequelize.DATE,
 		allowNull: false,
 	},
+	phone_number: {
+		type: Sequelize.STRING(11),
+		allowNull: false,
+	},
+	password: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
 	created_at: {
 		type: Sequelize.DATE,
 	},

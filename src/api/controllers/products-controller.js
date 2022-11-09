@@ -32,8 +32,8 @@ const createProduct = async (req, res) => {
 			validity,
 			location,
 			price,
-			weight,
-			weightUnit,
+			unit_measurement_id,
+			unit,
 		} = req.body;
 		const product = await createProducts(
 			category_id,
@@ -41,8 +41,8 @@ const createProduct = async (req, res) => {
 			validity,
 			location,
 			price,
-			weight,
-			weightUnit
+			unit_measurement_id,
+			unit
 		);
 		res.json(product);
 	} catch (error) {
