@@ -4,6 +4,7 @@ const {
 	updateUsers,
 	getUserByID,
 	deleteUsers,
+	allUserProducts
 } = require('../services/index');
 
 const getAllUsers = async (req, res) => {
@@ -102,10 +103,25 @@ const deleteUser = async (req, res) => {
 	}
 };
 
+const getAllUserProducts = async (req, res) => {
+	try {
+
+		const id = req.params.id;
+		const UserProducts = await allUserProducts(id);
+		res.json(UserProducts);
+	} catch (error) {
+		console.log(error);
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_GET_ALL_USER_PRODUCTS',
+		});
+	}
+};
+
 module.exports = {
 	getAllUsers,
 	createUser,
 	deleteUser,
 	getUserById,
 	updateUser,
+	getAllUserProducts
 };

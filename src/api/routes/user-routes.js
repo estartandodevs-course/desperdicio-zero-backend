@@ -16,6 +16,8 @@ router.get(
 	userController.getUserById
 );
 router.get('/users', userController.getAllUsers);
+router.get('/user-products/:id', userController.getAllUserProducts);
+
 router.post(
 	'/user',
 	validator.body(userDefaultBodySchema),
