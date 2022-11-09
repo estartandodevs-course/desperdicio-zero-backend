@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const db = require('./config/database');
 const userRouter = require('./api/routes/user-routes');
 const productRouter = require('./api/routes/product-routes');
@@ -11,6 +12,10 @@ const swaggerFile = require('../swagger_output.json');
 
 const app = express();
 const PORT = 3000;
+
+app.use(cors({
+	origin: '*'
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
