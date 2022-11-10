@@ -29,11 +29,11 @@ const Product = database.define('products', {
 	price: {
 		type: Sequelize.FLOAT,
 	},
-	weight: {
-		type: Sequelize.FLOAT,
+	unit_measurement_id: {
+		type: Sequelize.INTEGER,
 	},
-	weightUnit: {
-		type: Sequelize.STRING,
+	unit: {
+		type: Sequelize.INTEGER,
 	},
 	created_at: {
 		type: Sequelize.DATE,

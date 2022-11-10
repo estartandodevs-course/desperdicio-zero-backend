@@ -9,8 +9,6 @@ const {
 } = require('../middleware/product-validator');
 const productController = require('../controllers/products-controller');
 
-//TODO: implementar validator
-
 router.get(
 	'/product',
 	validator.query(productQuerySchema),
