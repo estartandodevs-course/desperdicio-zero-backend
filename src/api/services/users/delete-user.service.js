@@ -1,10 +1,14 @@
 const userRepository = require('../../db/models/user');
+const {
+	deleteUserProductsByUser,
+} = require('../user-products/delete-user-product.service');
 
 const deleteUsers = async (id) => {
-	const deletedUser = await userRepository.destroy({
+	await userRepository.destroy({
 		where: { id },
 	});
-	if (!deletedUser) throw new Error('User do not exists');
+
+	await deleteUserProductsByUser(id);
 };
 
 module.exports = { deleteUsers };

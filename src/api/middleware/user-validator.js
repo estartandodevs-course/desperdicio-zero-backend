@@ -5,11 +5,12 @@ const userQuerySchema = Joi.object({
 });
 
 const userDefaultBodySchema = Joi.object({
-	first_name: Joi.string().required(),
+	name: Joi.string().required(),
 	email_adress: Joi.string().email().required(),
 	phone_number: Joi.string().max(11).min(11).required(),
 	birthday: Joi.date().required(),
 	password: Joi.string().required(),
+	sex: Joi.string(),
 });
 
 module.exports = {

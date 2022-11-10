@@ -8,14 +8,14 @@ const {
 } = require('../middleware/user-validator');
 const userController = require('../controllers/user-controller');
 
-//TODO: implementar validator
-
 router.get(
 	'/user',
 	validator.query(userQuerySchema),
 	userController.getUserById
 );
 router.get('/users', userController.getAllUsers);
+router.get('/user-products/:id', userController.getAllUserProducts);
+
 router.post(
 	'/user',
 	validator.body(userDefaultBodySchema),
