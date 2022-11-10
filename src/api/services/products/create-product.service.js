@@ -12,7 +12,6 @@ const {
 } = require('../measurement/create-unit-measurement.service');
 
 const createProducts = async (
-	id,
 	user_id,
 	category_id,
 	name,
@@ -35,7 +34,6 @@ const createProducts = async (
 		await createMeasurements();
 	}
 	const createdProduct = await productRepository.create({
-		id,
 		category_id,
 		name,
 		validity,
@@ -45,7 +43,7 @@ const createProducts = async (
 		unit,
 	});
 
-	await createUserProducts(user_id, id);
+	await createUserProducts(user_id, createdProduct.id);
 
 	return createdProduct;
 };

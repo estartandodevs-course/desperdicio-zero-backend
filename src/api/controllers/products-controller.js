@@ -19,15 +19,21 @@ const getAllProducts = async (req, res) => {
 };
 
 const getProductById = async (req, res) => {
-	const id = req.query.id;
-	const product = await getProductByID(id);
-	res.json(product);
+	try {
+		const id = req.query.id;
+		const product = await getProductByID(id);
+		res.json(product);
+	} catch (error) {
+		console.log(error);
+		res.status(400).json({
+			message: error?.message || 'ERROR_TO_GET_PRODUCT_BY_ID',
+		});
+	}
 };
 
 const createProduct = async (req, res) => {
 	try {
 		const {
-			id,
 			user_id,
 			category_id,
 			name,
@@ -38,7 +44,6 @@ const createProduct = async (req, res) => {
 			unit,
 		} = req.body;
 		const product = await createProducts(
-			id,
 			user_id,
 			category_id,
 			name,
@@ -52,7 +57,7 @@ const createProduct = async (req, res) => {
 	} catch (error) {
 		console.log(error);
 		res.status(400).json({
-			message: error?.message || 'ERROR_TO_GET_PRODUCT_BY_ID',
+			message: error?.message || 'ERROR_TO_CREATE_PRODUCT',
 		});
 	}
 };
