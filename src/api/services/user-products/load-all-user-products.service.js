@@ -15,7 +15,6 @@ const allUserProducts = async (id) => {
 	const user = await getUserByID(id);
 	const productsByUser = await Promise.all(
 		userProducts.map(async (userProduct) => {
-			console.log('a', userProduct.product_id);
 			const product = await getProductByID(
 				Number(userProduct.product_id)
 			);

@@ -1,5 +1,6 @@
 const productRepository = require('../../db/models/product');
 const { loadAllCategories } = require('../categories/load-categories.service');
+const { loadAllUsers } = require('../users/load-users.service');
 const { createCategories } = require('../categories/create-categories.service');
 const {
 	createUserProducts,
@@ -24,6 +25,13 @@ const createProducts = async (
 	if (validity.getTime() < new Date()) {
 		throw new Error('Product is out of date');
 	}
+
+	const users = await loadAllUsers();
+	let isUser = false;
+	users.forEach((user) => {
+		isUser = user.id === user_id ? true : false;
+	});
+	if (!isUser) throw new Error('User do not exists');
 
 	const categories = await loadAllCategories();
 	if (!categories.length) {
