@@ -24,6 +24,8 @@ const {
 const { loadAllCategories } = require('./categories/load-categories.service');
 const { createCategories } = require('./categories/create-categories.service');
 
+const { authenticateUser } = require('./auth/authenticate-user');
+
 const {
 	getAllFilterCategories,
 } = require('./filters/get-filter-categories.service');
@@ -54,4 +56,5 @@ module.exports = {
 
 	getAllFilterCategories,
 	getAllOutOfDateProducts,
+	authenticateUser,
 };
