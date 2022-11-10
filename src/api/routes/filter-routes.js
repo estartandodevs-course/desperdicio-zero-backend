@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router({});
+const { createValidator } = require('express-joi-validation');
+const validator = createValidator({});
+const { filterParamsSchema } = require('../middleware/filter-validator');
 const filterController = require('../controllers/filters-controller');
 
 router.get(
@@ -13,5 +16,9 @@ router.get(
 	filterController.getGrainsCerealsAndFlours
 );
 
-router.get('/filter/out-of-date', filterController.getOutOfDateProducts);
+router.get(
+	'/filter/out-of-date/:user_id',
+	validator.params(filterParamsSchema),
+	filterController.getOutOfDateProducts
+);
 module.exports = router;

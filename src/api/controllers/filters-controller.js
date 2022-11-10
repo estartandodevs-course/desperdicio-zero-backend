@@ -54,13 +54,13 @@ const getGrainsCerealsAndFlours = async (req, res) => {
 
 const getOutOfDateProducts = async (req, res) => {
 	try {
-		const products = await getAllOutOfDateProducts();
+		const { user_id } = req.params;
+		const products = await getAllOutOfDateProducts(user_id);
 		res.json(products);
 	} catch (error) {
 		console.log(error);
 		res.status(400).json({
-			message:
-				error?.message || 'ERROR_TO_FILTER_GRAINS_CEREALS_AND_FLOURS',
+			message: error?.message || 'ERROR_TO_FILTER_PRODUCTS_OUT_OF_DATE',
 		});
 	}
 };
